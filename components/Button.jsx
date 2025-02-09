@@ -28,7 +28,7 @@ const Button = ({
         )
     }
    return (
-    <Pressable onpress={onPress} style={[ styles.button, buttonStyle, hasShadow && shadowStyle]}>
+    <Pressable onPress={onPress} style={[ styles.button, buttonStyle, hasShadow && shadowStyle]}>
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </Pressable>
   )
