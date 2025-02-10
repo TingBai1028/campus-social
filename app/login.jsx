@@ -1,15 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 import { theme } from '../constants/theme'
-import Home from '../icons/Home'
 import Icon from '../icons'
 import { StatusBar } from 'expo-status-bar'
 import BackButton from '../components/BackButton'
 import { useRouter } from 'expo-router'
 import { wp, hp } from '../helpers/common'
-import { TextInput } from 'react-native-web'
 import Input from '../components/Input'
+import Button from '../components/Button'
 
 const login = () => {
     const router = useRouter();
@@ -17,8 +16,15 @@ const login = () => {
     const passwordRef = useRef("");
     const [loading, setLoading] = useState(false);
 
+    const onSubmit =  async () => {
+        if (!emailRef.current || !passwordRef.current) {
+            Alert.alert('Login', 'Please fill all the fields!');
+            return;
+        }
+    }
+
   return (
-    <ScreenWrapper>
+    <ScreenWrapper bg="white" >
         <StatusBar style='dark' />
         <View style={styles.container}>
             <BackButton router={router}/>
@@ -46,6 +52,25 @@ const login = () => {
                     secureTextEntry
                     onChangeText={value=>passwordRef.current = value}
                 />
+
+                <Text style={styles.forgotPassword}>
+                    Forgot Password?
+                </Text>
+
+                {/* button */}
+                <Button title={'Login'} loading={loading} onPress={onSubmit} />
+
+                {/* footer */}
+                <View style={styles.footer}>
+                    <Text style={styles.footerText}>
+                        Don't have an account?
+                    </Text>
+                    <Pressable onPress={() => router.push('signUp')}>
+                        <Text style={[styles.footerText, {color: theme.colors.primaryDark, fontWeight: theme.fonts.semibold}]}>
+                            Sign up
+                        </Text>
+                    </Pressable>
+                </View>
             </View>
         </View>
     </ScreenWrapper>

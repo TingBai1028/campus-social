@@ -5,12 +5,14 @@ import Home from './Home';
 import ArrowLeft from './ArrowLeft';
 import Mail from './Mail';
 import Lock from './Lock';
+import User from './User';
 
 const icons = {
     home: Home,
     arrowLeft: ArrowLeft,
     mail: Mail,
     lock: Lock,
+    user: User,
 }
 
 const Icon = ({name, ...props}) => {
