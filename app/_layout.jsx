@@ -29,7 +29,7 @@ const MainLayout = () => {
       }
     })
   }, [])
-  
+
   return (
     <Stack 
         screenOptions={{
@@ -38,15 +38,5 @@ const MainLayout = () => {
     />
   )
 }
-
-// const _layout = () => {
-//   return (
-//     <Stack 
-//         screenOptions={{
-//             headerShown: false
-//         }}
-//     />
-//   )
-// }
 
 export default _layout
